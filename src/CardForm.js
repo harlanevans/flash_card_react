@@ -18,7 +18,7 @@ class CardForm extends React.Component {
 
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Group widths="equal">
           <Form.Input
             fluid
