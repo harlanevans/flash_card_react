@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Cards from "./Cards";
 import CardForm from './CardForm';
-import { Container, Header, Card } from "semantic-ui-react";
+import { Container, Header,  } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -25,6 +25,13 @@ class App extends Component {
     this.setState({ cards: [card, ...this.state.cards], });
   };
 
+  removeCard = (id) => {
+    const cards = this.state.cards.filter( card => {
+      if (card.id !== id)
+      return card; 
+    })
+    this.setState({ cards, });
+  };
 
 
   render() {
@@ -34,7 +41,10 @@ class App extends Component {
         <br />
         <CardForm add={this.addCard}/>
         <br />
-        <Cards varCards={this.state.cards}/>
+        <Cards 
+        varCards={this.state.cards} 
+        remove={this.removeCard}
+        />
       </Container>
     );
   }
