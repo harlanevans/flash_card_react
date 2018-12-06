@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Cards from "./Cards";
-import { Container, Header, } from "semantic-ui-react";
+import CardForm from './CardForm';
+import { Container, Header, Card } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -12,28 +13,28 @@ class App extends Component {
     ],
   };
 
+  getId = () => {
+    // NOTE We are just using this as a helper function for id's since we aren't using a db yet
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  };
+
+  addCard = (cardData) => {
+    let card = { id: this.getId(), ...cardData, };
+    this.setState({ cards: [card, ...this.state.cards], });
+  };
+
 
 
   render() {
     return (
       <Container>
         <Header as="h1">React Flash Cards</Header>
-        <Card.Group>
-          <Card>
-            <Card.Content>
-              <Card.Header>
-                Question
-              </Card.Header>
-              <Card.Description>
-                {
-                  varCards.map(flashcard => (
-                  <flashCard key={flashcard.id} {...flashcard} />
-                ))
-                }
-              </Card.Description>
-            </Card.Content>
-          </Card>
-        </Card.Group>
+        <br />
+        <CardForm add={this.addCard}/>
+        <br />
+        <Cards varCards={this.state.cards}/>
       </Container>
     );
   }
