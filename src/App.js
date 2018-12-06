@@ -29,7 +29,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
+      <Container style={{ paddingTop: "25px" }}>
         <Header as="h1">React Flash Cards</Header>
         <br />
         <CardForm add={this.addCard}/>
