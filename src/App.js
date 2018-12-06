@@ -21,8 +21,9 @@ class App extends Component {
   };
 
   addCard = (cardData) => {
-    let card = { id: this.getId(), ...cardData, };
-    this.setState({ cards: [card, ...this.state.cards], });
+    const { cards, } = this.state;
+    const card = { id: this.getId(), ...cardData, };
+    this.setState({ cards: [card, ...cards], });
   };
 
   removeCard = (id) => {
