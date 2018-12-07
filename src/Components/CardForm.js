@@ -36,7 +36,7 @@ class CardForm extends React.Component {
             value={this.state.backAnswer}
             onChange={this.handleChange}
           />
-          <Form.Button>Submit</Form.Button>
+          <Form.Button basic color='purple'>Submit</Form.Button>
         </Form.Group>
       </Form>
     )

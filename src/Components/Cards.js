@@ -20,7 +20,7 @@ const Cards = ({ varCards, remove, update, edit}) => (
           <Card.Content extra>
             <div className="ui two buttons">
               <Button basic color='blue' onClick={() => edit(card.id)}>
-                Edit
+                Show Card
           </Button>
               <Button basic color="red" onClick={() => remove(card.id)}>
                 Delete

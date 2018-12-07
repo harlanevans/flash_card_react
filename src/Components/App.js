@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component, Fragment } from 'react';
 import Cards from "./Cards";
 import CardForm from './CardForm';
-import EditForm from './EditForm';
-import { Route, } from 'react-router-dom';
+
 import { Container, Header, } from "semantic-ui-react";
 
 class App extends Component {
@@ -17,7 +15,7 @@ class App extends Component {
 
   };
 
-  toggleEdit = () => this.setState({ editing:  !this.state.editing, });
+  toggleEdit = () => this.setState({ editing: !this.state.editing, });
 
   editCard = (cardData) => {
     const cards = this.state.cards.map(card => {
@@ -52,21 +50,23 @@ class App extends Component {
 
   render() {
     return (
-      <Container style={{ paddingTop: "25px" }}>
-        <Header as="h1">React Flash Cards</Header>
-        <br />
-        <h1>Add Card</h1>
-        <CardForm add={this.addCard} update={this.editCard} />
+      <Fragment>
+        <Container>
+          <Header as="h1">React Flash Cards</Header>
+          <br />
+          <h1>Add Card</h1>
+          <br />
+          <CardForm add={this.addCard} update={this.editCard} />
 
-        <br />
-        <Cards
-          varCards={this.state.cards}
-          remove={this.removeCard}
-          update={this.editCard}
-          edit={this.toggleEdit}
-        />
-
-      </Container>
+          <br />
+          <Cards
+            varCards={this.state.cards}
+            remove={this.removeCard}
+            update={this.editCard}
+            edit={this.toggleEdit}
+          />
+        </Container>
+      </Fragment>
     );
   }
 }
